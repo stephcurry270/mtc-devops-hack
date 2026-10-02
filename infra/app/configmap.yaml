@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-app-nginx-config
+  namespace: default
+data:
+  default.conf: |
+    server {
+        listen 80;
+        location / {
+            default_type text/html;
+            return 200 'Hello World! MTC DevOps Hack Web Application is running successfully.\n';
+        }
+    }
+    server {
+        listen 8080;
+        location /stub_status {
+            stub_status on;
+            access_log off;
+            allow 127.0.0.1;
+            deny all;
+        }
+    }

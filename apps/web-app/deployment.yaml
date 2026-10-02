@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-app-index
+  namespace: default
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>MTC DevOps Hack - Web App</title>
+    </head>
+    <body>
+        <h1>Hello World! MTC DevOps Hack Web Application is running successfully.</h1>
+    </body>
+    </html>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  namespace: default
+  labels:
+    app: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+      volumes:
+      - name: html-volume
+        configMap:
+         name: web-app-index
