@@ -105,7 +105,7 @@ minikube start --driver=docker
 Скрипт последовательно выполнит проверку подключения к кластеру, создаст необходимые пространства имен и применит все манифесты приложений, шлюзов, мониторинга и логирования в строгом порядке.
 
 8. Структура репозитория
-Plaintext
+```Plaintext
 mtc-devops-hack/
 ├── infra/
 │   ├── app/                 # Манифесты веб-приложения (Deployment, Service, ConfigMap)
@@ -114,3 +114,4 @@ mtc-devops-hack/
 │   └── logging/             # Конфигурация Filebeat (DaemonSet, RBAC, ConfigMap)
 ├── deploy.sh                # Автоматический скрипт деплоя
 └── README.md                # Документация проекта
+```
