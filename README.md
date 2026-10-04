@@ -126,6 +126,9 @@ mtc-devops-hack/
 │   ├── gateway/             # Ресурсы Gateway API (GatewayClass, Gateway, HTTPRoute)
 │   ├── monitoring/          # Конфигурации Prometheus (ServiceMonitor, PodMonitor)
 │   └── logging/             # Конфигурация Filebeat (DaemonSet, RBAC, ConfigMap)
+├── docs/
+│   └── images/
+│       └── grafana-dashboard.png   # Скриншот работающей Grafana
 ├── deploy.sh                # Автоматический скрипт деплоя
 └── README.md                # Документация проекта
 ```
